@@ -55,6 +55,16 @@ extension ViewController: ARSCNViewDelegate {
         
         return node
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        
+        guard let faceAnchor = anchor as? ARFaceAnchor,
+            let faceGeometry = node.geometry as? ARSCNFaceGeometry else {
+            return
+        }
+        
+        faceGeometry.update(from: faceAnchor.geometry)
+    }
 }
 
 
