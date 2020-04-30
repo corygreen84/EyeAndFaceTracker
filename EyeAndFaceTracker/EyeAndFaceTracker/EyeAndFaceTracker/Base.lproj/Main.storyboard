@@ -11,26 +11,14 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EyeAndFaceTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="ARSCNView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dza-R0-783">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Dza-R0-783" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c73-3a-iQu"/>
-                            <constraint firstItem="Dza-R0-783" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="efF-zA-5W4"/>
-                            <constraint firstItem="Dza-R0-783" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="l3C-y1-6RG"/>
-                            <constraint firstItem="Dza-R0-783" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="wfO-AZ-OLA"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="mainCameraView" destination="Dza-R0-783" id="DzJ-9j-Nnh"/>
+                        <outlet property="sceneView" destination="8bC-Xf-vdC" id="4aR-cj-mYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

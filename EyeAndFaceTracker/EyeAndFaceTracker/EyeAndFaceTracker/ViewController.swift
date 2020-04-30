@@ -7,34 +7,34 @@
 //
 
 import UIKit
-import AVFoundation
+import ARKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var mainCameraView: UIView!
-    
-    var session: AVCaptureSession?
-    var input: AVCaptureDeviceInput?
-    var output: AVCapturePhotoOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
+    @IBOutlet var sceneView: ARSCNView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        guard ARFaceTrackingConfiguration.isSupported else {
+            fatalError("Face tracking is not supported on this device")
+        }
     }
     
-    func getDevice(position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        /*
-        let devices: NSArray = AVCaptureDevice.DiscoverySession
+        let config = ARFaceTrackingConfiguration()
         
-        for d in devices {
-            let deviceConverted = d as! AVCaptureDevice
-        }
-        */
-        
-        return nil
+        sceneView.session.run(config)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        sceneView.session.pause()
+    }
+    
 
 
 }
