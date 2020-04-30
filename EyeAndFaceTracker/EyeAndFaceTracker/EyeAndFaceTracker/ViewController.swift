@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         
         sceneView.delegate = self
         
+        
+        // making sure the device is supported - i.e. at least iPhone X //
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
@@ -26,6 +28,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        // running the face tracking config
         let config = ARFaceTrackingConfiguration()
         
         sceneView.session.run(config)
@@ -34,6 +38,7 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // pausing the face tracking //
         sceneView.session.pause()
     }
     
@@ -41,6 +46,7 @@ class ViewController: UIViewController {
 
 }
 
+// adding an extension to Viewcontroller -> ARSCNViewDelegate
 extension ViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard let device = sceneView.device else {
