@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sceneView.delegate = self
+        
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
@@ -38,4 +40,21 @@ class ViewController: UIViewController {
 
 
 }
+
+extension ViewController: ARSCNViewDelegate {
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        guard let device = sceneView.device else {
+            return nil
+        }
+        
+        let faceGeometry = ARSCNFaceGeometry(device: device)
+        
+        let node = SCNNode(geometry: faceGeometry)
+        
+        node.geometry?.firstMaterial?.fillMode = .lines
+        
+        return node
+    }
+}
+
 
