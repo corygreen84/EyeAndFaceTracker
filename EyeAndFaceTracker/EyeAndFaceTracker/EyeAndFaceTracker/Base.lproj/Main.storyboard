@@ -15,19 +15,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-cm-B8a">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dza-R0-783">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="l9P-cm-B8a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="90s-RP-lA7"/>
-                            <constraint firstItem="l9P-cm-B8a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a40-V9-CIX"/>
-                            <constraint firstItem="l9P-cm-B8a" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yKq-Al-a45"/>
-                            <constraint firstItem="l9P-cm-B8a" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="ySs-fX-yR5"/>
+                            <constraint firstItem="Dza-R0-783" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c73-3a-iQu"/>
+                            <constraint firstItem="Dza-R0-783" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="efF-zA-5W4"/>
+                            <constraint firstItem="Dza-R0-783" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="l3C-y1-6RG"/>
+                            <constraint firstItem="Dza-R0-783" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-44" id="wfO-AZ-OLA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mainCameraView" destination="Dza-R0-783" id="DzJ-9j-Nnh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
