@@ -12,12 +12,16 @@ import ARKit
 class ViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    @IBOutlet weak var startStopButton: UIButton!
+    
+    var buttonState: Bool = false
+    
+    var arrayOfVertices: [Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
-        
         
         // making sure the device is supported - i.e. at least iPhone X //
         guard ARFaceTrackingConfiguration.isSupported else {
@@ -27,12 +31,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-        // running the face tracking config
-        let config = ARFaceTrackingConfiguration()
-        
-        sceneView.session.run(config)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,8 +40,30 @@ class ViewController: UIViewController {
         sceneView.session.pause()
     }
     
-
-
+    @IBAction func startStopOnClick(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        buttonState = !buttonState
+        
+        if(buttonState){
+            
+            // running the face tracking config
+            let config = ARFaceTrackingConfiguration()
+            sceneView.session.run(config)
+            
+            startStopButton.setTitle("Stop Session", for: UIControl.State.normal)
+            
+            arrayOfVertices.removeAll()
+            
+        }else{
+            // pausing the face tracking //
+            sceneView.session.pause()
+            startStopButton.setTitle("Start Session", for: UIControl.State.normal)
+            
+            
+            print("verticies -> \(arrayOfVertices.count)")
+            
+        }
+    }
 }
 
 // adding an extension to Viewcontroller -> ARSCNViewDelegate
@@ -68,6 +88,9 @@ extension ViewController: ARSCNViewDelegate {
             let faceGeometry = node.geometry as? ARSCNFaceGeometry else {
             return
         }
+        
+        // print("this is geometry -> \(faceAnchor.geometry.vertices)")
+        arrayOfVertices.append(contentsOf: faceAnchor.geometry.vertices)
         
         faceGeometry.update(from: faceAnchor.geometry)
     }
